@@ -13,16 +13,16 @@ public class MainProgramTest {
 
     @Test
     public void testFileComparison() throws IOException {
-        // Paths to your input and output files
-    	Path inputFile = Paths.get("C:\\eclipse-workspace\\KantarAudienceExerciseJava\\src\\test\\resources\\input-statements.psv");
-        Path outputFile = Paths.get("C:\\eclipse-workspace\\KantarAudienceExerciseJava\\target\\actual-sessions.psv");
+    	DataProcessor processor = new DataProcessor();
+    	
+        // Paths to your output and expected files
+    	Path outputFile = Paths.get("C:\\eclipse-workspace\\KantarAudienceExerciseJava\\target\\actual-sessions.psv");
         Path expectedFile = Paths.get("C:\\eclipse-workspace\\KantarAudienceExerciseJava\\src\\test\\resources\\expected-sessions.psv");
         
     	String inputFilePath = "C:\\eclipse-workspace\\KantarAudienceExerciseJava\\src\\test\\resources\\input-statements.psv";
 		String outputFilePath = "C:\\eclipse-workspace\\KantarAudienceExerciseJava\\target\\actual-sessions.psv";
-		String[] inputArgs = {inputFilePath, outputFilePath};
-		
-		Main.main(new String[0]);
+				
+		processor.processInputFile(inputFilePath, outputFilePath);
 				
         // Read the content of both files
         String outputContent = new String(Files.readAllBytes(outputFile));
